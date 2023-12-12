@@ -16,7 +16,7 @@ public class TopMenuTest extends Utility {
         openBrowser(baseurl);
     }
     public void selectmenu(String menu) {
-        List<WebElement> topmenu = driver.findElements(By.xpath("//div[@class='collapse navbar-collapse navbar-ex1-collapse']/ul"));
+        List<WebElement> topmenu = driver.findElements(By.xpath("//div[@class='collapse navbar-collapse navbar-ex1-collapse']/ul/li"));
         for (WebElement name : topmenu){
             if (name.getText().equalsIgnoreCase(menu));
             {
@@ -32,11 +32,11 @@ public class TopMenuTest extends Utility {
         //1.1 Mouse hover on “Desktops” Tab and click
         //1.2 call selectMenu method and pass the menu = “Show All Desktops”
         //1.3 Verify the text ‘Desktops’
-        driver.findElement(By.xpath("//ul[@class='nav navbar-nav']/li[1]/a")).click();
-        mouseHoverAndClick(By.linkText("Desktops"));
+        driver.findElement(By.xpath("//div[@class='collapse navbar-collapse navbar-ex1-collapse']/ul/li")).click();
+        mouseHoverAndClick(By.xpath("//ul[@class='nav navbar-nav']/li/div/a"));
         Thread.sleep(3000);
         selectmenu("Show AllDesktops");
-        verifyText("Desktops", By.xpath("//div[@class='collapse navbar-collapse navbar-ex1-collapse']/ul/li[1]"));
+        verifyText("Desktops", By.xpath("//div[@class='collapse navbar-collapse navbar-ex1-collapse']/ul/li[1]/a"), "Your Account Has Been Created!");
 
     }
     @Test
@@ -45,21 +45,21 @@ public class TopMenuTest extends Utility {
         //2.2 call selectMenu method and pass the menu = “Show All Laptops & Notebooks”
         //2.3 Verify the text ‘Laptops & Notebooks’
 
-        driver.findElement(By.xpath("//ul[@class='nav navbar-nav']/li[2]/a")).click();
-        mouseHoverAndClick(By.linkText("Show AllLaptops & Notebooks"));
+        driver.findElement(By.xpath("//div[@class='collapse navbar-collapse navbar-ex1-collapse']/ul/li[2]")).click();
+        mouseHoverAndClick(By.xpath("//ul[@class='nav navbar-nav']/li[2]/div/a"));
         Thread.sleep(3000);
-        selectmenu("Show AllDesktops");
-        verifyText("Laptops & Notebooks", By.xpath("//div[@class='collapse navbar-collapse navbar-ex1-collapse']/ul/li[2]"));
+        selectmenu("Show AllLaptops & Notebooks");
+        verifyText("Laptops & Notebooks", By.xpath("//div[@class='collapse navbar-collapse navbar-ex1-collapse']/ul/li[2]"), "Your Account Has Been Created!");
     }
     @Test
     public void verifyUserShouldNavigateToComponentsPageSuccessfully() throws InterruptedException {
         //3.1 Mouse hover on “Components” Tab and click
         //3.2 call selectMenu method and pass the menu = “Show All Components”
-        driver.findElement(By.xpath("//ul[@class='nav navbar-nav']/li[3]/a")).click();
-        mouseHoverAndClick(By.linkText("Components"));
+        driver.findElement(By.xpath("//div[@class='collapse navbar-collapse navbar-ex1-collapse']/ul/li[3]")).click();
+        mouseHoverAndClick(By.xpath("//ul[@class='nav navbar-nav']/li[3]/div/a"));
         Thread.sleep(3000);
-        selectmenu("Show AllDesktops");
-        verifyText("Components", By.xpath("//div[@class='collapse navbar-collapse navbar-ex1-collapse']/ul/li[3]"));
+        selectmenu("Show AllComponents");
+        verifyText("Components", By.xpath("//div[@class='collapse navbar-collapse navbar-ex1-collapse']/ul/li[3]"), "Your Account Has Been Created!");
 
     }
     @After

@@ -176,7 +176,7 @@ public class Utility extends BaseTest {
     //*********************************OTHERS METHODS****************************************
 
     // This method will verify text displayed on web page
-    public void verifyText(String expectedMessage, By by) {
+    public void verifyText(String expectedMessage, By by, String s) {
         String actualMessage = getTextFromElement(by);
         Assert.assertEquals( expectedMessage, actualMessage);
     }
